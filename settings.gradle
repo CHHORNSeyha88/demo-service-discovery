@@ -1,0 +1,4 @@
+rootProject.name = 'demo-discovery-service'
+include 'eureka-server'
+include 'product-service'
+

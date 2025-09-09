@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: product-service
+server:
+  port: 8081
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
