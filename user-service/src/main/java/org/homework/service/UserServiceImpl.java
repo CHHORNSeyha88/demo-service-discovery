@@ -42,7 +42,7 @@ public class UserServiceImpl {
         return userRepository.save(existingUser);
     }
 
-    public Optional<User> getById(Long id) {
-        return userRepository.findById(id);
+    public User getById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

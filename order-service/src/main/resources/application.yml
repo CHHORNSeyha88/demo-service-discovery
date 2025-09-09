@@ -1,8 +1,21 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5444/database_order
+    password: seyha123
+    username: seyha
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
   application:
     name: order-service
 server:
   port: 8082
+
 
 eureka:
   client:

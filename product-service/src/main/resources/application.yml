@@ -1,8 +1,21 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5444/database_product
+    password: seyha123
+    username: seyha
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
   application:
     name: product-service
 server:
   port: 8081
+
 
 eureka:
   client:

@@ -26,8 +26,8 @@ public class UserController {
     ResponseEntity<User> create(User req){
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(req));
     }
-    @PostMapping("/{id}")
-    ResponseEntity<Optional<User>> getById (@PathVariable Long id){
+    @GetMapping("/{id}")
+    ResponseEntity<User> getById (@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getById(id));
     }
 }
