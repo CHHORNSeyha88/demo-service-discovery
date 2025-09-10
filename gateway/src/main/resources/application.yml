@@ -1,0 +1,67 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: http://localhost:8083
+              predicates:
+                - Path=/users/**
+              filters:
+                - RewritePath=/users/(?<remaining>.*), /api/v1/users/${remaining}
+            - id: product-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/products/**
+              filters:
+                - RewritePath=/products/(?<remaining>.*), /api/v1/products/${remaining}
+            - id: order-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/orders/**
+              filters:
+                - RewritePath=/orders/(?<remaining>.*), /api/v1/orders/${remaining}
+
+
+              #user to filter req,res
+              #  - StripPrefix=1
+              #  - PrefixPath=/api/v1/users
+              #  - RewritePath=/orders/(?<remaining>.*), api/v1/orders/${remaining}
+
+
+
+#springdoc:
+#  swagger-ui:
+#    urls:
+#      - name: user-service
+#        url: api/v1/users/v3/api-docs
+#      - name: product-service
+#        url: api/v1/products/v3/api-docs
+#
+#
+
+
+#    autoconfiguration
+
+#    gateway:
+#      server:
+#        webflux:
+#          discovery:
+#            locator:
+#              enabled: true
+#              lower-case-service-id: true
+
+#eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      DefaultZone: http://localhost:8761/eureka/
+
+
