@@ -3,5 +3,5 @@ include 'eureka-server'
 include 'product-service'
 include 'order-service'
 include 'user-service'
-include 'gateway'
+include 'api-gateway'
 
